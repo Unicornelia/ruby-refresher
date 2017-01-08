@@ -160,6 +160,8 @@ end
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+  lower_string = string.gsub(/\b[A-Z]?[^A-Z\s']+\s*\b/, '')
+  lower_string
 end
 
 # round up a float up and convert it to an Integer,
@@ -183,6 +185,7 @@ end
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  domain = email.gsub(/.+@([^.]+).+/, '\1')
 end
 
 # capitalize the first letter in each word of a string,
