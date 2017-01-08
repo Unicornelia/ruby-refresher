@@ -1,5 +1,7 @@
 # keep only the elements that start with an a
 def select_elements_starting_with_a(array)
+  letter = 'a'
+  array.select {|word| word[0] == letter}
 end
 
 # keep only the elements that start with a vowel
@@ -13,14 +15,15 @@ end
 
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
-  new_array = array.compact
-  p new_array
-  new_array.delete_at(false)
+  no_nil_array = array.compact
+  no_nil_array.delete(false)
+  no_nil_array
 end
 
 # don't reverse the array, but reverse every word inside it. e.g.
 # ['dog', 'monkey'] becomes ['god', 'yeknom']
 def reverse_every_element_in_array(array)
+  array.map(&:reverse!)
 end
 
 # given an array of student names, like ['Bob', 'Dave', 'Clive']
@@ -33,6 +36,7 @@ end
 # discard the first 3 elements of an array,
 # e.g. [1, 2, 3, 4, 5, 6] becomes [4, 5, 6]
 def all_elements_except_first_3(array)
+
 end
 
 # add an element to the beginning of an array
@@ -61,6 +65,10 @@ end
 # even numbers come first
 # so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 def separate_array_into_even_and_odd_numbers(array)
+  even = array.select { |num| num.even? }
+  odd = array.select { |num| !num.even? }
+  new_array = [even, odd]
+  new_array
 end
 
 # count the numbers of elements in an element which are palindromes
@@ -81,6 +89,7 @@ end
 # add up all the numbers in an array, so [1, 3, 5, 6]
 # returns 15
 def total_of_array(array)
+  array.inject(0) {|sum, x| sum + x}
 end
 
 # turn an array into itself repeated twice. So [1, 2, 3]
@@ -96,6 +105,9 @@ end
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 17
 def average_of_array(array)
+  divider = array.length
+  average = (total_of_array(array).to_f / divider)
+  average.ceil
 end
 
 # get all the elements in an array, up until the first element
