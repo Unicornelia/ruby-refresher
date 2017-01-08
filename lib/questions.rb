@@ -6,6 +6,7 @@ end
 
 # keep only the elements that start with a vowel
 def select_elements_starting_with_vowel(array)
+  array.select {|word| word[0].include?('a') || word[0].include?('e') || word[0].include?('i') || word[0].include?('o') || word[0].include?('u')}
 end
 
 # remove instances of nil (but NOT false) from an array
@@ -47,12 +48,15 @@ end
 # sort an array of words by their last letter, e.g.
 # ['sky', 'puma', 'maker'] becomes ['puma', 'maker', 'sky']
 def array_sort_by_last_letter_of_word(array)
+  array.sort! { |x, y| y <=> x }
 end
 
 # cut strings in half, and return the first half, e.g.
 # 'banana' becomes 'ban'. If the string is an odd number of letters
 # round up - so 'apple' becomes 'app'
 def get_first_half_of_string(string)
+  index = (string.size.to_f / 2).ceil
+  string[0, index]
 end
 
 # turn a positive integer into a negative integer. A negative integer
@@ -181,15 +185,17 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
-  # string2 = string.split
-  # string2.each do |word|
-  #   if word.length < 4
-  #     word
-  #   else
-  #     word.capitalize!
-  #   end
-  # end
-  # string2.join(' ').slice!(0).insert(0, 'T')
+  string2 = string.split
+  string2.each do |word|
+    if word.length < 4
+      word
+    else
+      word.capitalize!
+    end
+  end
+  string2.shift
+  string2.insert(0, 'The')
+  string2.join(' ')
 end
 
 # return true if a string contains any special characters
@@ -210,6 +216,7 @@ end
 
 # get the square root of a number
 def square_root_of(number)
+  Math.sqrt(number)
 end
 
 # count the number of words in a file
