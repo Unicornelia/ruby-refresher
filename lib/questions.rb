@@ -36,7 +36,7 @@ end
 # discard the first 3 elements of an array,
 # e.g. [1, 2, 3, 4, 5, 6] becomes [4, 5, 6]
 def all_elements_except_first_3(array)
-
+  array.drop(3)
 end
 
 # add an element to the beginning of an array
@@ -58,6 +58,9 @@ end
 # turn a positive integer into a negative integer. A negative integer
 # stays negative
 def make_numbers_negative(number)
+  negative = number * -1
+  return number if number < 0
+  negative
 end
 
 # turn an array of numbers into two arrays of numbers, one an array of
@@ -80,10 +83,12 @@ end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
+  array.min {|a, b| a.length <=> b.length }
 end
 
 # return the shortest word in an array
 def longest_word_in_array(array)
+  array.max {|a, b| a.length <=> b.length }
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
@@ -95,6 +100,7 @@ end
 # turn an array into itself repeated twice. So [1, 2, 3]
 # becomes [1, 2, 3, 1, 2, 3]
 def double_array(array)
+  new_array = array + array
 end
 
 # convert a symbol into a string
@@ -150,11 +156,13 @@ end
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
+  float.ceil
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
+  float.to_i
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
@@ -173,6 +181,15 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  # string2 = string.split
+  # string2.each do |word|
+  #   if word.length < 4
+  #     word
+  #   else
+  #     word.capitalize!
+  #   end
+  # end
+  # string2.join(' ').slice!(0).insert(0, 'T')
 end
 
 # return true if a string contains any special characters
