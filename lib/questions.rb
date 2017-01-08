@@ -32,6 +32,7 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice,
 def every_possible_pairing_of_students(array)
+  array.combination(2).to_a
 end
 
 # discard the first 3 elements of an array,
@@ -125,6 +126,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
+  array.bsearch {|x| x > 5 }
 end
 
 # turn an array (with an even number of elements) into a hash, by
@@ -138,6 +140,9 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
+  array1 = array.join('')
+  array2 = array1.split("")
+  array2.sort
 end
 
 # swap the keys and values in a hash. e.g.
@@ -172,6 +177,7 @@ end
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
 # becomes 31/10/2013
 def format_date_nicely(date)
+  date.strftime('%d/%m/%Y')
 end
 
 # get the domain name *without* the .com part, from an email address
@@ -207,6 +213,7 @@ end
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+  range.last
 end
 
 # should return true for a 3 dot range like 1...20, false for a
@@ -221,6 +228,7 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  file = File.open(file_path, "r")
 end
 
 # --- tougher ones ---
