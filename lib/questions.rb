@@ -127,7 +127,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
-  array.bsearch {|x| x > 5 }
+  array.take_while {|x| x < 6 }
 end
 
 # turn an array (with an even number of elements) into a hash, by
@@ -164,8 +164,7 @@ end
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
-  lower_string = string.gsub(/\b[A-Z]?[^A-Z\s']+\s*\b/, '')
-  lower_string
+  string.gsub(/[A-Z]/, '')
 end
 
 # round up a float up and convert it to an Integer,
@@ -215,6 +214,7 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+  /[^a-z\d]/i === string
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
@@ -226,6 +226,7 @@ end
 # should return true for a 3 dot range like 1...20, false for a
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  range.exclude_end?
 end
 
 # get the square root of a number
