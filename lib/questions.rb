@@ -236,7 +236,7 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
-  file = File.open(file_path, "r")
+  IO.readlines(file_path).join.split.count
 end
 
 # --- tougher ones ---
@@ -245,6 +245,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  str_method.call
 end
 
 # return true if the date is a uk bank holiday for 2014
